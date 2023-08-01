@@ -2,7 +2,7 @@
 
 Sign-In with Apple is an awesome feature that can provide trust to your users as well as convenience. Unfortuantely, Apple doesn't allow using `localhost` as a callback URL.
 
-There are workarounds for this, as [you can read about in my blog post here](). This script automates the process of setting up these workarounds.
+There are workarounds for this, as [you can read about in my blog post here](https://goforgoldman.com/posts/2023-local-apple-signin/). This script automates the process of setting up these workarounds.
     
 In a nutshell:
 * Generates a self-signed certificate (`.pfx`, `.crt`, `.pem`, and `.key`) with an address you can use for testing locally (e.g. `local-apple-signin.mydomain.com`)
