@@ -30,7 +30,7 @@ This will use a default URL and will generate a certificate password for you, bu
 ./Generate-LocalCert.ps1 -url local.apple-signin.mydomain.com -certPassword myC00lp@55w%rd
 ```
 
-With this simple script, you can solve all the pain of developing locally for Sing-In with Apple into a trivial one-liner.
+With this simple script, you can solve all the pain of developing locally for Sign-In with Apple into a trivial one-liner.
 
 # Other requirements
 The script needs to be run with root or administrator privileges (this is required for writing to the hosts file and importing the certificate into the trusted root CA store).
