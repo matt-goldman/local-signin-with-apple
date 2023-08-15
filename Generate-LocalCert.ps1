@@ -66,15 +66,15 @@ $keyFilePath = Join-Path -Path $certFolderPath -ChildPath "local.applesign-in.ke
 $pfxFilePath = Join-Path -Path $certFolderPath -ChildPath "local.applesign-in.pfx"
 $crtFilePath = Join-Path -Path $certFolderPath -ChildPath "local.applesign-in.crt"
 
-Write-Host "🔒 Generating certificate for $url"
+Write-Host "Generating certificate for $url"
 
 openssl req -newkey rsa:4096 -nodes -keyout $keyFilePath -x509 -days 365 -out $pemFilePath -subj "/CN=$url" -addext "subjectAltName = DNS:$url"
 openssl pkcs12 -export -out $pfxFilePath -inkey $keyFilePath -in $pemFilePath -password pass:$certPassword
 openssl pkcs12 -in $pfxFilePath -out $crtFilePath -clcerts -nokeys -password pass:$certPassword
 
-Write-Host "✅ Done"
+Write-Host "Done"
 
-Write-Host "🔒 Importing certificate"
+Write-Host "Importing certificate"
 
 if ($IsWindows) {
     Import-PfxCertificate -FilePath $pfxFilePath -CertStoreLocation Cert:\CurrentUser\My -Password (ConvertTo-SecureString -String $certPassword -Force -AsPlainText)
@@ -85,13 +85,13 @@ if ($IsWindows) {
     Write-Host "Importing the certificate will need to be done manually on Linux. Or you can just trust it in your browser."
 }
 
-Write-Host "✅ Done"
+Write-Host "Done"
 
 $hostsLine = "127.0.0.1 $url"
 $confirmation = Read-Host -Prompt "Do you want add $url to your hosts file? (y/N)"
 
 if ($confirmation -eq 'Y' -or $confirmation -eq 'y') {
-    Write-Host "📝 Adding entry to hosts file"
+    Write-Host "Adding entry to hosts file"
 
     try {
         if ($IsWindows) {
@@ -104,7 +104,7 @@ if ($confirmation -eq 'Y' -or $confirmation -eq 'y') {
         Write-Host $hostsLine
     }
 
-    Write-Host "✅ Done"
+    Write-Host "Done"
 } else {
     Write-Host "Skipping adding $url to hosts file"
     Write-Host "You will need to manually add this hosts entry to your hosts file:"
@@ -144,4 +144,4 @@ if (Environment.IsDevelopment())
 
 Write-Host ([Environment]::NewLine)
 Write-Host "If you're using this approach, don't forget to add the cert password to user secrets."
-Write-Host "🍎 Have fun! 👋"
+Write-Host "Have fun!"
