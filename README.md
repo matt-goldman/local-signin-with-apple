@@ -2,14 +2,14 @@
 
 Sign-In with Apple is an awesome feature that can provide trust to your users as well as convenience. Unfortuantely, Apple doesn't allow using `localhost` as a callback URL.
 
-There are workarounds for this, as [you can read about in my blog post here](https://goforgoldman.com/posts/2023-local-apple-signin/). This script automates the process of setting up these workarounds.
+There are workarounds for this, as [you can read about in my blog post here](https://goforgoldman.com/posts/local-apple-signin). This script automates the process of setting up these workarounds.
     
 In a nutshell:
 * Generates a self-signed certificate (`.pfx`, `.crt`, `.pem`, and `.key`) with an address you can use for testing locally (e.g. `local-apple-signin.mydomain.com`)
 * Imports and trusts the certificate
 * Adds a hosts file entry for the address
 
-It places the certificate in a folder called `.applesignin` in your user profile, so all you need to do after running the script is [configure your application to use it](#configure-your-application-to-use-the-local-url-and-ssl-certificate).
+It places the certificate in a folder called `.applesignin` in your user profile, so all you need to do after running the script is [configure your application to use it](https://goforgoldman.com/posts/local-apple-signin#configure-your-application-to-use-the-local-url-and-ssl-certificate).
 
 # Prerequisites
 The script has the following prerequisites:
